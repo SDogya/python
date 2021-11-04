@@ -23,7 +23,6 @@ def forward(i, x, y, a, I):
     context.line_to(nx, ny)
 
     if i < M_I:
-
         return forward(i + 1, nx, ny, a, I) + forward(i + 1, nx, ny, a, I)
 
     b = [nx, ny]
