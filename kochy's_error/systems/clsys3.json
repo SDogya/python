@@ -1,0 +1,73 @@
+{
+  
+  "bodys": [
+    {
+      "name": "lava",
+      "mass": [1.98,30],
+
+      "x": [0,1],
+      "y": [0,1],
+      "angle": 45,
+      "iterration": 1,
+      "stable orbit" : true,
+      "orbit radius":[10,10],
+      "vx": 0,
+      "vy": 0,
+      "scale": 12800000
+    },{
+      "name": "earth",
+      "mass": [1,25],
+
+      "x": [147,9],
+      "y": [0,11],
+      "angle": 0,
+      "iterration": 2,
+      "stable orbit" : true,
+      "orbit radius":[152,10],
+      "vx": 0,
+      "vy": 0,
+      "scale": 12800000
+    }
+    ,{
+      "name": "island",
+      "mass": [3.3,23],
+
+      "x": [0,14],
+      "y": [-1,10],
+      "angle": 0,
+      "iterration": 2,
+      "stable orbit" : true,
+      "orbit radius":[1,10],
+      "vx": 0,
+      "vy": 0,
+      "scale": 12800000
+    },{
+      "name": "gas",
+      "mass": [4.87,24],
+
+      "x": [-107.5,9],
+      "y": [0,9],
+      "angle": 0,
+      "iterration": 1,
+      "stable orbit" : true,
+      "orbit radius":[108.9,9],
+      "vx": 0,
+      "vy": 0,
+      "scale": 12800000
+    },{
+      "name": "dry",
+      "mass": [6.4,23],
+
+      "x": [-2.49232,11],
+      "y": [0,9],
+      "angle": 0,
+      "iterration": 1,
+      "stable orbit" : true,
+      "orbit radius":[2.0666,11],
+      "vx": 0,
+      "vy": 0,
+      "scale": 12800000
+    }
+
+  ]
+}
