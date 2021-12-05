@@ -27,8 +27,9 @@ CM_TICK = ANOTHER_CONSTANT / 2 ** EL  # на какой добавляется �
 TICK_LIMIT = 300  # на сколько долго будеет отображатсья траектоия . \
 # если поставить очень большое число программа будет работать в 6 кадров
 
-SHAPE_TICK = 5 * 2 ** (2*EL)  # вот по этой хрени мы будеем рисовать площадь чем она ниже тем лучше, но если сильно маленькая
-                                                                                        #  программа умрет
+SHAPE_TICK = 5 * 2 ** (
+        2 * EL)  # вот по этой хрени мы будеем рисовать площадь чем она ниже тем лучше, но если сильно маленькая
+#  программа умрет
 # на точность расчета площади не влияет
 
 MP = 25  # на сколько сильно ускоряется симуляция (не влияет на точность тк физ расчеты не ускоряются )
@@ -417,7 +418,6 @@ class MyGame(a.Window):
         # будем выбранную планету в 4 раза увеличивать
         self.system[self.choosen].scale *= 4
 
-        
         self.system[k].change_x = 0
         self.system[k].change_y = 0
 
@@ -498,21 +498,18 @@ class MyGame(a.Window):
                 # одну и ту же точность
                 # чтобы убедится что они делают одно и то же можно площадь единичного
                 # круга посчитать оба выдадут примерно 3.14...
-                area = dt * 0.5 * (
-                        (self.system[self.choosen].center_x - self.system[self.system.star_numer].center_x) ** 2 + (
-                        self.system[self.choosen].center_y - self.system[
-                    self.system.star_numer].center_y) ** 2) ** 0.5 * (
-                               self.system[self.choosen].change_y ** 2 + self.system[
-                           self.choosen].change_x ** 2) ** 0.5
+                x = [self.system[self.choosen].center_x - self.system[self.system.star_numer].center_x,
+                     self.system[self.choosen].center_y - self.system[self.system.star_numer].center_y]
+            y = [self.system[self.choosen].change_x, self.system[self.choosen].change_y]
+            area = dt * 0.5 * np.cross(x, y)
 
-                self.sectors.update(self.system[self.choosen].center_x, self.system[self.choosen].center_y, area)
+            self.sectors.update(self.system[self.choosen].center_x, self.system[self.choosen].center_y, area)
 
-                self.scroll_to_player()
+            self.scroll_to_player()
 
     ####################################################################################################
 
     def scroll_to_player(self):
-
         position = Vec2(self.system[self.tek].center_x - self.width / 2,
                         self.system[self.tek].center_y - self.height / 2)
 
