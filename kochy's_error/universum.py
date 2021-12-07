@@ -12,6 +12,11 @@ SCREEN_HEIGHT = 1080
 
 SCREEN_TITLE = None
 
+DIMENSION = 2     # елси 2D - 1, если 3D - 2
+
+
+
+
 # Почему тут нет абстрактных классов ? ну я не нашел как их прикрутить чтоб еще сильнее не портить код
 ANOTHER_CONSTANT = 2 ** 6
 EL = 4
@@ -31,7 +36,7 @@ SHAPE_TICK = 5 * 2 ** EL  # вот по этой хрени мы будеем р
 #  программа умрет
 # на точность расчета площади не влияет
 
-MP = 25  # на сколько сильно ускоряется симуляция (не влияет на точность тк физ расчеты не ускоряются )
+MP = 20  # на сколько сильно ускоряется симуляция (не влияет на точность тк физ расчеты не ускоряются )
 
 
 # от чего зависит конечная точность сравненния площадей
@@ -372,15 +377,15 @@ class MyGame(a.Window):
 
         a.enable_timings()
 
-        self.tek = 0
+        self.tek = 1
 
-        self.choosen = 0
+        self.choosen = 1
 
         self.PAUSE = 0
 
         self.LAW_STEP = 0
 
-        self.SPEED = 1
+        self.SPEED = 26
 
         self.system = ClosedSystem()
 
@@ -400,7 +405,7 @@ class MyGame(a.Window):
                 i["name"],
                 i["mass"][0] * 10 ** i["mass"][1],
                 i["x"][0] * 10 ** i["x"][1], i["y"][0] * 10 ** i["y"][1], i["angle"],
-                i["iterration"], i["vx"], i["vy"], 128000000 / 2,
+                DIMENSION, i["vx"], i["vy"], 128000000 / 2,
                 i["stable orbit"], i["orbit radius"][0] * 10 ** i["orbit radius"][1]
             ))
             # ищем самую массивную хрень и скажем что она тут звезда
@@ -424,7 +429,7 @@ class MyGame(a.Window):
 
         self.system.star_numer = k
 
-        self.camera_sprites.scale = 2 * 10 ** 8
+        self.camera_sprites.scale = 10 * 10 ** 8
 
     ####################################################################################################
     def on_draw(self):
