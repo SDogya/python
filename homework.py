@@ -1,17 +1,17 @@
-def prime_test(l): # тест простоты
+def prime_test(l):
     for i in range(3, int(l ** .5) + 1, 2):
         if l % i == 0:
             return False
     return True
 
 
-def euclidus(a: int, b: int):  # евклид
+def euclidus(a: int, b: int):
     while b:
         a, b = b, a % b
     return abs(a)
 
 
-def extended_euclidus(a: int, b: int): # расширенный евклид
+def extended_gcd(a: int, b: int):
     x0, x1, y0, y1 = 0, 1, 1, 0
     while a != 0:
         q, a, b = b // a, b % a, a
@@ -20,7 +20,7 @@ def extended_euclidus(a: int, b: int): # расширенный евклид
     return x0, y0
 
 
-class Quaternion: # кватернионы
+class quaternion:
     def __init__(self, args: list):
         if len(args) < 5:
             self.x = list(args)
@@ -34,14 +34,14 @@ class Quaternion: # кватернионы
         self.el = ["", "i", "j", "k"]
 
     def __mul__(self, other):
-        if type(other) == q:
+        if type(other) == quaternion:
             table = [
-                [q([1]), q([0, 1]), q([0, 0, 1]), q([0, 0, 0, 1])],
-                [q([0, 1]), q([-1]), q([0, 0, 0, 1]), q([0, 0, -1])],
-                [q([0, 0, 1]), q([0, 0, 0, -1]), q([-1]), q([0, 1])],
-                [q([0, 0, 0, 1]), q([0, 0, 1, 0]), q([0, -1, 0, 0]), q([-1])]
+                [quaternion([1]), quaternion([0, 1]), quaternion([0, 0, 1]), quaternion([0, 0, 0, 1])],
+                [quaternion([0, 1]), quaternion([-1]), quaternion([0, 0, 0, 1]), quaternion([0, 0, -1])],
+                [quaternion([0, 0, 1]), quaternion([0, 0, 0, -1]), quaternion([-1]), quaternion([0, 1])],
+                [quaternion([0, 0, 0, 1]), quaternion([0, 0, 1, 0]), quaternion([0, -1, 0, 0]), quaternion([-1])]
             ]
-            x = q([])
+            x = quaternion([])
             for i in range(4):
                 for j in range(4):
                     x += self.x[i] * other.x[j] * table[i][j]
@@ -50,13 +50,13 @@ class Quaternion: # кватернионы
 
         elif type(other) in [int, float]:
 
-            return q([self.x[0] * other, self.x[1] * other, self.x[2] * other, self.x[3] * other])
+            return quaternion([self.x[0] * other, self.x[1] * other, self.x[2] * other, self.x[3] * other])
 
         else:
-            raise TypeError("fuck your type, i need q type or number")
+            raise TypeError("fuck your type, i need quaternion type or number")
 
     def __rmul__(self, other):
-        return q(self.x) * other
+        return quaternion(self.x) * other
 
     def __str__(self):
         s = ""
@@ -76,27 +76,34 @@ class Quaternion: # кватернионы
         return s ** 0.5
 
     def __add__(self, other):
-        if type(other) == q:
+        if type(other) == quaternion:
             for i in range(4):
                 self.x[i] += other.x[i]
-            return q(self.x)
+            return quaternion(self.x)
         else:
-            raise TypeError("fuck your type, i need q type")
+            raise TypeError("fuck your type, i need quaternion type")
 
     def __sub__(self, other):
-        if type(other) == q:
+        if type(other) == quaternion:
 
-            return q(self.x) + other * -1
+            return quaternion(self.x) + other * -1
         else:
-            raise TypeError("fuck your type, i need q type")
+            raise TypeError("fuck your type, i need quaternion type")
 
     def conjugate(self):
 
-        x = q(self.x)*q([-1])
+        x = quaternion(self.x) * quaternion([-1])
         x.x[0]*=-1
         return x
 
     def __list__(self):
         return self.x
 
-   
+
+
+x = quaternion([1, 1, 1, 1])
+y = quaternion([1, 1, 1, 1])
+print( x+y*x)
+print(euclidus(83,7))
+print(extended_gcd(83,7))
+print(prime_test(5489251893))
