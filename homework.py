@@ -1,8 +1,8 @@
 def prime_test(l): # тест простоты
     for i in range(3, int(l ** .5) + 1, 2):
         if l % i == 0:
-            return 0
-    return 1
+            return False
+    return True
 
 
 def euclidus(a: int, b: int):  # евклид
@@ -20,7 +20,7 @@ def extended_euclidus(a: int, b: int): # расширенный евклид
     return x0, y0
 
 
-class q: # кватернионы
+class Quaternion: # кватернионы
     def __init__(self, args: list):
         if len(args) < 5:
             self.x = list(args)
