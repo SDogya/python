@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>web ebaniy</title>
+
+
+    <style type="text/css">
+        .cent{
+        color: white;
+        top: 50%;
+        left: 50%;
+        width: 450px;
+        height: 450px;
+        position: absolute;
+        margin-top: -225px;
+        margin-left: -225px;
+        margin-bottom: -7px;
+
+        }
+p{
+ margin-left: -100px;
+
+}
+.button {
+
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+::placeholder{
+text-align :center;
+color :white;
+
+}
+
+leb{
+ color: white;
+ font-style: italic;
+ font-size:100px;
+ }
+
+input{
+text-align :center;
+color :white;
+  background-color: #0CB08D;
+  border:none;
+
+   font-size:25px;
+}
+div{
+    margin-bottom: 10px;
+}
+body{
+background-color: #171717;
+}
+    </style>
+</head>
+
+
+<body align=center>
+<leb>Designed by Artemiy Lebedev</leb>
+<div class="cent">
+
+    <h1>La Graph</h1>
+
+    <div>
+        <form action={{ url_for(
+        'func') }} method="post">
+
+        <div >
+            <input  size="30" name="f" placeholder="enter the f(x) here">
+        </div>
+        <div>
+            <input  size="8" name="a" placeholder="beg x : -10"> <input size="8"  name="b" placeholder="end x : 10">
+             </div>
+            <div><input size="8" name="c" placeholder="count : 1000"></div>
+        </div>
+
+    <div>
+        <button class="button" type="submit" value="fuck">Plot</button>
+    </div>
+
+    <div>
+
+     <p  >   <img src="{{url_for('static', filename='save.png')}}" ></p>
+    </div>
+      <div>Hint: you can clear the plot just write "cls"</div>
+</form>
+
+</body>
+
+</html>
