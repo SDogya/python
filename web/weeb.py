@@ -52,5 +52,9 @@ def func():
 
 
 if __name__ == '__main__':
-    plt.savefig( os.path.join("static", "save.png"))
+    try:
+        os.mkdir("static")
+    except:
+        pass
+    plt.savefig(os.path.join("static", "save.png"))
     app.run(debug=True)
