@@ -2,7 +2,7 @@ from flask import Flask, render_template, request
 from sympy import *
 import matplotlib.pyplot as plt
 import numpy as np
-
+import os
 app = Flask(__name__)
 app.config.from_object(__name__)
 
@@ -35,7 +35,7 @@ def func():
     a = a.replace("^", "**")
     if a == "cls":
         plt.cla()
-        plt.savefig("static\save.png")
+        plt.savefig(os.path.join("static", "save.png"))
     try:
 
         f = parse_expr(a)
@@ -44,7 +44,7 @@ def func():
             s = np.linspace(x1, x2, x3)
             s1 = [f.subs({"x": i}) for i in s]
             plt.plot(s, s1)
-            plt.savefig("static\save.png")
+            plt.savefig(os.path.join("static", "save.png"))
             g = f
     except:
         pass
@@ -52,5 +52,5 @@ def func():
 
 
 if __name__ == '__main__':
-    plt.savefig("static\save.png")
+    plt.savefig( os.path.join("static", "save.png"))
     app.run(debug=True)

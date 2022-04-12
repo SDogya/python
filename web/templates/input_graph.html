@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>web ebaniy</title>
+    <title>Graph</title>
 
 
     <style type="text/css">
@@ -42,7 +42,7 @@ color :white;
 leb{
  color: white;
  font-style: italic;
- font-size:100px;
+ font-size:500%;
  }
 
 input{
@@ -70,8 +70,7 @@ background-color: #171717;
     <h1>La Graph</h1>
 
     <div>
-        <form action={{ url_for(
-        'func') }} method="post">
+        <form action={{ url_for( 'func' ) }} method="post">
 
         <div >
             <input  size="30" name="f" placeholder="enter the f(x) here">
