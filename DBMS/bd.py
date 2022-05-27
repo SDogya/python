@@ -55,7 +55,8 @@ class MainWindow(QMainWindow):
         except:
             pass
         label = QLabel(self)
-        pixmap = QPixmap(r'C:\Users\creep\Desktop\This is python\luciv\errors\beer2.png')
+        pixmap = QPixmap(os.path.join("errors", "beer2.png"))
+
         label.setPixmap(pixmap)
         self.setCentralWidget(label)
 
