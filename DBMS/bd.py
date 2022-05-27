@@ -162,7 +162,7 @@ class MainWindow(QMainWindow):
                 idn = self.table.item(cell_index, 0).text()
                 try:
                     self.cursor.execute(f"""Update {t_name} set {col_name} = "{o.text()}" where {ids} = {idn}""")
-                    print(self.con.commit())
+                   
                     self.choose_table(self.cur_tb_name)
                     self.window2.close()
                 except:
@@ -422,7 +422,7 @@ class MainWindow(QMainWindow):
                 command += i[1].currentText()
                 command += " , "
             command = command[:-2] + ");"
-            print(command)
+          
             try:
                 self.cursor.execute(command)
                 self.window2.close()
